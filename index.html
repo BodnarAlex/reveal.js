@@ -66,6 +66,193 @@
 				</ul>
 			</section>
 
+
+			<section>
+				<section data-auto-animate>
+					<h2>Creating a canvas</h2>
+					<h4>At HTML</h4>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						<canvas id="myCanvas" width="200" height="100"></canvas>
+					</code></pre>
+					<br>
+					<h4>At JS</h4>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						const canvas = document.getElementById("myCanvas");
+						const ctx = canvas.getContext("2d");
+					</code></pre>
+				</section>
+				<section>
+					<h2>Сoordinate system</h2>
+					<p>The starting point (point 0,0) is in the upper left corner.
+					</p>
+					<img src="./img/2d_context.png" alt="2d coordinat context">
+
+				</section>
+				<section>
+					<h2>Coordinate System Offset</h2>
+					<br>
+					<p>
+						Using the save() context method, you can save the current state of the coordinate system and
+						restore it later using the restored() method.
+					</p>
+					<br>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						context.translate(100, 100);
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section data-auto-animate>
+					<h2>Drawing shapes</h2>
+					<p>
+						We'll look at drawing the following shapes and more:
+					</p>
+					<ul>
+						<li>Rect</li>
+						<li>Path</li>
+						<li>Line</li>
+						<li>Arcs</li>
+						<li>Curves</li>
+						<li>Circle</li>
+						<li>Text</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Rect</h2>
+
+				</section>
+				<section>
+					<h2>Path</h2>
+
+				</section>
+				<section>
+					<h2>Line</h2>
+
+				</section>
+				<section>
+					<h2>Arcs</h2>
+
+				</section>
+				<section>
+					<h2>Curves</h2>
+
+				</section>
+				<section>
+					<h2>Circle</h2>
+
+				</section>
+				<section>
+					<h2>Text</h2>
+
+				</section>
+			</section>
+
+			<section>
+				<section data-auto-animate>
+					<h2>Colors at Canvas</h2>
+					<p>
+						'strokeStyle' and 'fillStyle' properties
+					</p>
+					<p>These properties take as a value a string describing the color. This string can be in one of the
+						following formats:</p>
+					<ul>
+						<li>'coral'</li>
+						<li>'#FF7F50'</li>
+						<li>'rgb(255, 127, 80)'</li>
+						<li>'rgba(255, 127, 80, 1)'</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Transparency</h2>
+					<p>Transparency can be achieved in two ways:</p>
+					<ul>
+						<li>
+							<p>using the rgba() function</p>
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+								canvas.fillStyle = "rgba(100,150,185,0.5)";
+						</code></pre>
+						</li>
+						<li>
+							<p>The transparency value can be set using the property</p>
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+								canvas.globalAlpha = 0.333;
+						</code></pre>
+						</li>
+
+					</ul>
+				</section>
+				<section>
+					<h2>Gradient</h2>
+					<p>
+						Linear Gradient
+					</p>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						let grad = canvas.createLinearGradient(x0, y0, x, y);
+				</code></pre>
+					<p>
+						Radial Gradient
+					</p>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						var grad = canvas.createRadialGradient(x1, y1, r1, x2, y2, r2)
+				</code></pre>
+				</section>
+				<section>
+					<p>
+						Color Gradient for variable grad
+					</p>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						grad.addColorStop(0, 'black');
+						grad.addColorStop(1, 'yellow');
+
+						canvas.fillStyle = grad;
+		            </code></pre>
+					<img src="./img/gradient.png" alt="views of lines">
+				</section>
+			</section>
+
+			<section>
+				<h2>Line properties</h2>
+				<p>
+					Line width
+				</p>
+				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						canvas.lineWidth = 6;
+				</code></pre>
+				<p>
+					Line cap
+				</p>
+				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						canvas.lineCap = 'butt';
+						canvas.lineCap = 'round';
+						canvas.lineCap = 'square';
+				</code></pre>
+				<img src="./img/lines.png" alt="views of lines">
+			</section>
+
+			<section>
+				<h2>How to clear a canvas</h2>
+				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						canvas.clearRect(0, 0, canvas.width, canvas.height);
+				</code></pre>
+				<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+					canvas.clearRect(x0, y0, x, y);
+				</code></pre>
+			</section>
+
+			<section>
+				<section>
+					<h2>Animation</h2>
+					gif
+				</section>
+				<section>
+					<h2>Animation code</h2>
+					<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+						canvas.clearRect(x0, y0, x, y);
+					</code></pre>
+				</section>
+			</section>
+
 			<section>
 				<h2>Pros and Cons</h2>
 				<table>
