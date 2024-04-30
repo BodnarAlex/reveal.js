@@ -67,11 +67,72 @@
 			</section>
 
 			<section>
+				<h2>Pros and Cons</h2>
+				<table>
+					<tbody>
+						<tr>
+							<td>It is more convenient to deal with a large number of elements</td>
+							<td>Overloads CPU and RAM </td>
+						</tr>
+						<tr>
+							<td>It has hardware acceleration</td>
+							<td>Due to the garbage collector limitation, there is no way to clear memory</td>
+						</tr>
+						<tr>
+							<td>Every pixel can be manipulated</td>
+							<td>You need to handle object events yourself</td>
+						</tr>
+						<tr>
+							<td>Image processing filters can be applied</td>
+							<td>Poor performance at high resolutions</td>
+						</tr>
+						<tr>
+							<td>There are many libraries</td>
+							<td>You have to draw each element separately</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<section>
+					<h2>Support of Canvas</h2>
+					<img src="./img/support.png" alt="support of canvas">
+				</section>
+				<section>
+					<h2>Checking for support</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						const canvas = document.getElementById("tutorial");
+
+						if (canvas.getContext) {
+  							const ctx = canvas.getContext("2d");
+ 							 // drawing code here
+						} else {
+  							// canvas-unsupported code here
+						}
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
 				<h1>The conclusion</h1>
+				<p>
+					With Canvas, developers can create dynamic, interactive, and visually stunning applications, ranging
+					from games and data visualizations to image editors and digital art tools.
+				</p>
 			</section>
 
 			<section style="text-align: left;">
 				<h1>THE END</h1>
+				<p>
+					- <a href="https://ru.wikipedia.org/wiki/Canvas_(HTML)">Wikipedia</a> <br>
+					- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial">MND Canvas
+						tutorial</a> <br>
+					- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes">MND
+						Drawing shapes with canvas</a> <br>
+					- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations">MND
+						Basic animations</a>
+				</p>
 			</section>
 
 		</div>
