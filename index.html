@@ -25,8 +25,6 @@
 <body>
 
 	<div class="reveal">
-
-		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
 			<section>
 				<h1>Canvas</h1>
@@ -110,42 +108,90 @@
 					</p>
 					<ul>
 						<li>Rect</li>
-						<li>Path</li>
 						<li>Line</li>
 						<li>Arcs</li>
 						<li>Curves</li>
-						<li>Circle</li>
 						<li>Text</li>
 					</ul>
 				</section>
 				<section>
 					<h2>Rect</h2>
-
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.fillStyle = 'blue';
+						ctx.fillRect(50, 50, 20, 30);
+				</code></pre>
+					<img class="fragment" src="./img/fillRect.png" alt="fillRect">
 				</section>
 				<section>
-					<h2>Path</h2>
-
+					<h2>Rect</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.strokeStyle = 'red';
+						ctx.strokeRect(50, 50, 40, 20);
+				</code></pre>
+					<img class="fragment" src="./img/strokeRect.png" alt="strokeRect">
 				</section>
 				<section>
 					<h2>Line</h2>
-
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.beginPath();
+						ctx.moveTo(50, 50);
+						ctx.lineTo(80, 60);
+						ctx.strokeStyle = 'green';
+						ctx.stroke();
+						ctx.closePath();
+				</code></pre>
+					<img class="fragment" src="./img/line.png" alt="green line">
 				</section>
 				<section>
 					<h2>Arcs</h2>
-
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.beginPath();
+						ctx.arc(50, 50, 20, 0, Math.PI * 2);
+						ctx.strokeStyle = 'violet';
+						ctx.stroke();
+						ctx.closePath();
+				</code></pre>
+					<img class="fragment" src="./img/circle.png" alt="violet arc">
+				</section>
+				<section>
+					<h2>Arcs</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.beginPath();
+						ctx.arc(50, 50, 20, 0, Math.PI * 2);
+						ctx.fillStyle = 'yellow';
+						ctx.fill();
+						ctx.closePath();
+				</code></pre>
+					<img class="fragment" src="./img/arc.png" alt="yellow circle">
 				</section>
 				<section>
 					<h2>Curves</h2>
-
-				</section>
-				<section>
-					<h2>Circle</h2>
-
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.bezierCurveTo(20, 20, 100, 80, 90, 10);
+						ctx.strokeStyle = 'braon';
+						ctx.stroke();
+				</code></pre>
+					<img class="fragment" src="./img/bezierCurve.png" alt="bezierCurve">
 				</section>
 				<section>
 					<h2>Text</h2>
-
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.font = "28px Arial";
+						ctx.fillText("Canvas", 50, 50);
+				</code></pre>
+					<img class="fragment" src="./img/text1.png" alt="text fill">
 				</section>
+				<section>
+					<h2>Text</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.font = "28px Arial";
+						ctx.textAlign = 'center';
+						ctx.textBaseline = 'middle';
+						ctx.strokeText("Canvas", 50, 50);
+				</code></pre>
+					<img class="fragment" src="./img/text2.png" alt="text stroke">
+				</section>
+			</section>
 			</section>
 
 			<section>
@@ -243,12 +289,49 @@
 			<section>
 				<section>
 					<h2>Animation</h2>
-					gif
+					<img src="./img/animation.webp" alt="animation of ball">
 				</section>
 				<section>
-					<h2>Animation code</h2>
+					<h2>Animation logic</h2>
+					<ol>
+						<li class="fragment">
+							Draw a circle
+							<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+								ctx.fillStyle = 'blue';
+								ctx.arc(50, x, 10, 0, Math.PI * 2);
+								ctx.fill();
+							</code></pre>
+						</li>
+						<li class="fragment">
+							Erase circle
+							<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+								ctx.clearRect(0, 0, canvas.width, canvas.height);
+							</code></pre>
+						</li>
+						<li class="fragment">
+							Draw a circle lower on the y-axis for the next frame using requestAnimationFrame
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h2>animate()</h2>
 					<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
-						canvas.clearRect(x0, y0, x, y);
+						const canvas = document.getElementById("canvas");
+						const ctx = canvas.getContext("2d");
+						let x = 0;
+
+					function animate() {
+						ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+						x += 1;
+
+						ctx.fillStyle = 'blue';
+						ctx.arc(50, x, 10, 0, Math.PI * 2);
+						ctx.fill();
+						requestAnimationFrame(animate);
+					}
+
+					animate();
 					</code></pre>
 				</section>
 			</section>
