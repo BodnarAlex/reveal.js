@@ -95,7 +95,7 @@
 					</p>
 					<br>
 					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						context.translate(100, 100);
+						ctx.translate(100, 100);
 					</code></pre>
 				</section>
 			</section>
@@ -216,13 +216,13 @@
 						<li>
 							<p>using the rgba() function</p>
 							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-								canvas.fillStyle = "rgba(100,150,185,0.5)";
+								ctx.fillStyle = "rgba(100,150,185,0.5)";
 						</code></pre>
 						</li>
 						<li>
 							<p>The transparency value can be set using the property</p>
 							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-								canvas.globalAlpha = 0.333;
+								ctx.globalAlpha = 0.333;
 						</code></pre>
 						</li>
 
@@ -234,13 +234,13 @@
 						Linear Gradient
 					</p>
 					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						let grad = canvas.createLinearGradient(x0, y0, x, y);
+						let grad = ctx.createLinearGradient(x0, y0, x, y);
 				</code></pre>
 					<p>
 						Radial Gradient
 					</p>
 					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						var grad = canvas.createRadialGradient(x1, y1, r1, x2, y2, r2)
+						var grad = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2)
 				</code></pre>
 				</section>
 				<section>
@@ -251,7 +251,7 @@
 						grad.addColorStop(0, 'black');
 						grad.addColorStop(1, 'yellow');
 
-						canvas.fillStyle = grad;
+						ctx.fillStyle = grad;
 		            </code></pre>
 					<img src="./img/gradient.png" alt="views of lines">
 				</section>
@@ -263,15 +263,15 @@
 					Line width
 				</p>
 				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						canvas.lineWidth = 6;
+					ctx.lineWidth = 6;
 				</code></pre>
 				<p>
 					Line cap
 				</p>
 				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						canvas.lineCap = 'butt';
-						canvas.lineCap = 'round';
-						canvas.lineCap = 'square';
+					ctx.lineCap = 'butt';
+					ctx.lineCap = 'round';
+					ctx.lineCap = 'square';
 				</code></pre>
 				<img src="./img/lines.png" alt="views of lines">
 			</section>
@@ -279,10 +279,10 @@
 			<section>
 				<h2>How to clear a canvas</h2>
 				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						canvas.clearRect(0, 0, canvas.width, canvas.height);
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
 				</code></pre>
 				<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
-					canvas.clearRect(x0, y0, x, y);
+					ctx.clearRect(x0, y0, x, y);
 				</code></pre>
 			</section>
 
