@@ -1,40 +1,436 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js – The Canvas</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Canvas</h1>
+				<p>
+					<small>Created by <a href="https://github.com/BodnarAlex">Alex Bodnar</a></small>
+				</p>
+			</section>
+
+			<section>
+				<h2>What is Canvas</h2>
+				<p>
+					"canvas" is
+					<span class="fragment">
+						an HTML element which can be used to draw graphics via scripting (usually JavaScript). This can,
+						for
+						instance, be used to draw graphs, combine photos, or create simple animations.</span>
+				</p>
+			</section>
+
+			<section>
+				<h2>What to use canvas for</h2>
+				<ul>
+					<li>Game Development</li>
+					<li>Data Visualization</li>
+					<li>Image Editing</li>
+					<li>Drawing Tools</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>What was used before the canvas</h2>
+				<ul>
+					<li>SVG (Scalable Vector Graphics)</li>
+					<li>Flash</li>
+					<li>HTML Tables and CSS</li>
+					<li>HTML Image Maps</li>
+				</ul>
+			</section>
+
+
+			<section>
+				<section data-auto-animate>
+					<h2>Creating a canvas</h2>
+					<h4>At HTML</h4>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						<canvas id="myCanvas" width="200" height="100"></canvas>
+					</code></pre>
+					<br>
+					<h4>At JS</h4>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						const canvas = document.getElementById("myCanvas");
+						const ctx = canvas.getContext("2d");
+					</code></pre>
+				</section>
+				<section>
+					<h2>Сoordinate system</h2>
+					<p>The starting point (point 0,0) is in the upper left corner.
+					</p>
+					<img src="./img/2d_context.png" alt="2d coordinat context">
+
+				</section>
+				<section>
+					<h2>Coordinate System Offset</h2>
+					<br>
+					<p>
+						Using the save() context method, you can save the current state of the coordinate system and
+						restore it later using the restored() method.
+					</p>
+					<br>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.translate(100, 100);
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section data-auto-animate>
+					<h2>Drawing shapes</h2>
+					<p>
+						We'll look at drawing the following shapes and more:
+					</p>
+					<ul>
+						<li>Rect</li>
+						<li>Line</li>
+						<li>Arcs</li>
+						<li>Curves</li>
+						<li>Text</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Rect</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.fillStyle = 'blue';
+						ctx.fillRect(50, 50, 20, 30);
+				</code></pre>
+					<img class="fragment" src="./img/fillRect.png" alt="fillRect">
+				</section>
+				<section>
+					<h2>Rect</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.strokeStyle = 'red';
+						ctx.strokeRect(50, 50, 40, 20);
+				</code></pre>
+					<img class="fragment" src="./img/strokeRect.png" alt="strokeRect">
+				</section>
+				<section>
+					<h2>Line</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.beginPath();
+						ctx.moveTo(50, 50);
+						ctx.lineTo(80, 60);
+						ctx.strokeStyle = 'green';
+						ctx.stroke();
+						ctx.closePath();
+				</code></pre>
+					<img class="fragment" src="./img/line.png" alt="green line">
+				</section>
+				<section>
+					<h2>Arcs</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.beginPath();
+						ctx.arc(50, 50, 20, 0, Math.PI * 2);
+						ctx.strokeStyle = 'violet';
+						ctx.stroke();
+						ctx.closePath();
+				</code></pre>
+					<img class="fragment" src="./img/circle.png" alt="violet arc">
+				</section>
+				<section>
+					<h2>Arcs</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.beginPath();
+						ctx.arc(50, 50, 20, 0, Math.PI * 2);
+						ctx.fillStyle = 'yellow';
+						ctx.fill();
+						ctx.closePath();
+				</code></pre>
+					<img class="fragment" src="./img/arc.png" alt="yellow circle">
+				</section>
+				<section>
+					<h2>Curves</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.bezierCurveTo(20, 20, 100, 80, 90, 10);
+						ctx.strokeStyle = 'braon';
+						ctx.stroke();
+				</code></pre>
+					<img class="fragment" src="./img/bezierCurve.png" alt="bezierCurve">
+				</section>
+				<section>
+					<h2>Text</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.font = "28px Arial";
+						ctx.fillText("Canvas", 50, 50);
+				</code></pre>
+					<img class="fragment" src="./img/text1.png" alt="text fill">
+				</section>
+				<section>
+					<h2>Text</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						ctx.font = "28px Arial";
+						ctx.textAlign = 'center';
+						ctx.textBaseline = 'middle';
+						ctx.strokeText("Canvas", 50, 50);
+				</code></pre>
+					<img class="fragment" src="./img/text2.png" alt="text stroke">
+				</section>
+			</section>
+			</section>
+
+			<section>
+				<section data-auto-animate>
+					<h2>Colors at Canvas</h2>
+					<p>
+						'strokeStyle' and 'fillStyle' properties
+					</p>
+					<p>These properties take as a value a string describing the color. This string can be in one of the
+						following formats:</p>
+					<ul>
+						<li>'coral'</li>
+						<li>'#FF7F50'</li>
+						<li>'rgb(255, 127, 80)'</li>
+						<li>'rgba(255, 127, 80, 1)'</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Transparency</h2>
+					<p>Transparency can be achieved in two ways:</p>
+					<ul>
+						<li>
+							<p>using the rgba() function</p>
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+								ctx.fillStyle = "rgba(100,150,185,0.5)";
+						</code></pre>
+						</li>
+						<li>
+							<p>The transparency value can be set using the property</p>
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+								ctx.globalAlpha = 0.333;
+						</code></pre>
+						</li>
+
+					</ul>
+				</section>
+				<section>
+					<h2>Gradient</h2>
+					<p>
+						Linear Gradient
+					</p>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						let grad = ctx.createLinearGradient(x0, y0, x, y);
+				</code></pre>
+					<p>
+						Radial Gradient
+					</p>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						var grad = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2)
+				</code></pre>
+				</section>
+				<section>
+					<p>
+						Color Gradient for variable grad
+					</p>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						grad.addColorStop(0, 'black');
+						grad.addColorStop(1, 'yellow');
+
+						ctx.fillStyle = grad;
+		            </code></pre>
+					<img src="./img/gradient.png" alt="views of lines">
+				</section>
+			</section>
+
+			<section>
+				<h2>Line properties</h2>
+				<p>
+					Line width
+				</p>
+				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+					ctx.lineWidth = 6;
+				</code></pre>
+				<p>
+					Line cap
+				</p>
+				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+					ctx.lineCap = 'butt';
+					ctx.lineCap = 'round';
+					ctx.lineCap = 'square';
+				</code></pre>
+				<img src="./img/lines.png" alt="views of lines">
+			</section>
+
+			<section>
+				<h2>How to clear a canvas</h2>
+				<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+				</code></pre>
+				<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+					ctx.clearRect(x0, y0, x, y);
+				</code></pre>
+			</section>
+
+			<section>
+				<section>
+					<h2>Animation</h2>
+					<img src="./img/animation.webp" alt="animation of ball">
+				</section>
+				<section>
+					<h2>Animation logic</h2>
+					<ol>
+						<li class="fragment">
+							Draw a circle
+							<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+								ctx.fillStyle = 'blue';
+								ctx.arc(50, x, 10, 0, Math.PI * 2);
+								ctx.fill();
+							</code></pre>
+						</li>
+						<li class="fragment">
+							Erase circle
+							<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+								ctx.clearRect(0, 0, canvas.width, canvas.height);
+							</code></pre>
+						</li>
+						<li class="fragment">
+							Draw a circle lower on the y-axis for the next frame using requestAnimationFrame
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h2>animate()</h2>
+					<pre data-id="code-animation fragment"><code class="hljs javascript fragment" data-trim data-line-numbers>
+						const canvas = document.getElementById("canvas");
+						const ctx = canvas.getContext("2d");
+						let x = 0;
+
+					function animate() {
+						ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+						x += 1;
+
+						ctx.fillStyle = 'blue';
+						ctx.arc(50, x, 10, 0, Math.PI * 2);
+						ctx.fill();
+						requestAnimationFrame(animate);
+					}
+
+					animate();
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<h2>Pros and Cons</h2>
+				<table>
+					<tbody>
+						<tr>
+							<td>It is more convenient to deal with a large number of elements</td>
+							<td>Overloads CPU and RAM </td>
+						</tr>
+						<tr>
+							<td>It has hardware acceleration</td>
+							<td>Due to the garbage collector limitation, there is no way to clear memory</td>
+						</tr>
+						<tr>
+							<td>Every pixel can be manipulated</td>
+							<td>You need to handle object events yourself</td>
+						</tr>
+						<tr>
+							<td>Image processing filters can be applied</td>
+							<td>Poor performance at high resolutions</td>
+						</tr>
+						<tr>
+							<td>There are many libraries</td>
+							<td>You have to draw each element separately</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<section>
+					<h2>Support of Canvas</h2>
+					<img src="./img/support.png" alt="support of canvas">
+				</section>
+				<section>
+					<h2>Checking for support</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						const canvas = document.getElementById("tutorial");
+
+						if (canvas.getContext) {
+  							const ctx = canvas.getContext("2d");
+ 							 // drawing code here
+						} else {
+  							// canvas-unsupported code here
+						}
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<h1>The conclusion</h1>
+				<p>
+					With Canvas, developers can create dynamic, interactive, and visually stunning applications, ranging
+					from games and data visualizations to image editors and digital art tools.
+				</p>
+			</section>
+
+			<section style="text-align: left;">
+				<h1>THE END</h1>
+				<p>
+					- <a href="https://ru.wikipedia.org/wiki/Canvas_(HTML)">Wikipedia</a> <br>
+					- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial">MND Canvas
+						tutorial</a> <br>
+					- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes">MND
+						Drawing shapes with canvas</a> <br>
+					- <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations">MND
+						Basic animations</a>
+				</p>
+			</section>
+
 		</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	</div>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/search/search.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+		});
+
+	</script>
+
+</body>
+
 </html>
