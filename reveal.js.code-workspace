@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "reveal.js",
+			"path": "."
+		},
+		{
+			"name": "img",
+			"path": "../reveal.js server/img"
+		}
+	],
+	"settings": {}
+}

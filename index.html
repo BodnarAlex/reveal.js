@@ -157,7 +157,7 @@
 					<h2>Arcs</h2>
 					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
 						ctx.beginPath();
-						ctx.arc(50, 50, 20, 0, Math.PI * 2);
+						ctx.arc(50, 50, 20, 0, Math.PI);
 						ctx.fillStyle = 'yellow';
 						ctx.fill();
 						ctx.closePath();
@@ -248,8 +248,8 @@
 						Color Gradient for variable grad
 					</p>
 					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
-						grad.addColorStop(0, 'black');
-						grad.addColorStop(1, 'yellow');
+						grad.addColorStop(0, 'yellow');
+						grad.addColorStop(1, 'black');
 
 						ctx.fillStyle = grad;
 		            </code></pre>
@@ -341,20 +341,16 @@
 				<table>
 					<tbody>
 						<tr>
-							<td>It is more convenient to deal with a large number of elements</td>
+							<td>Easier with more elements</td>
 							<td>Overloads CPU and RAM </td>
 						</tr>
 						<tr>
 							<td>It has hardware acceleration</td>
-							<td>Due to the garbage collector limitation, there is no way to clear memory</td>
+							<td>There is no way to clear memory</td>
 						</tr>
 						<tr>
 							<td>Every pixel can be manipulated</td>
 							<td>You need to handle object events yourself</td>
-						</tr>
-						<tr>
-							<td>Image processing filters can be applied</td>
-							<td>Poor performance at high resolutions</td>
 						</tr>
 						<tr>
 							<td>There are many libraries</td>
